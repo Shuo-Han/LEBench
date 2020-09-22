@@ -12,7 +12,7 @@ DEBUG            = True
 GRUB_CFG_FILE    = '/boot/grub/grub.cfg'
 GRUB_FILE        = '/etc/default/grub' 
 
-WORKING_DIR      = ''
+WORKING_DIR      = '/users/evsh/LEBench'
 KERN_INDEX_FILE  = '/iteration' 
 LOCAL_GRUB_FILE  = '/grub'
 KERN_LIST_FILE   = '/kern_list' 
@@ -156,7 +156,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         kern_version = sys.argv[1]
         print "[INFO] Configuring to boot into " + kern_version + "."
-        generate_grub_file(WORKING_DIR + 'template/grub', kern_version)
+        generate_grub_file(WORKING_DIR + '/template/grub', kern_version)
         install_grub_file()
         sys.exit(0)
 
@@ -184,7 +184,7 @@ if __name__ == '__main__':
         run_bench()
 
     if DEBUG: print '[DEBUG] Preparing to modify grub.'
-    if generate_grub_file(WORKING_DIR + 'template/grub', get_kern_list(next_kern_idx)):
+    if generate_grub_file(WORKING_DIR + '/template/grub', get_kern_list(next_kern_idx)):
         install_grub_file()
         if DEBUG: print '[DEBUG] Done configuring grub for the next kernel.'
         restart()
